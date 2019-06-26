@@ -15,6 +15,7 @@ lxml = "*"
 gunicorn = "*"
 dj-database-url = "*"
 psycopg2 = "==2.7.0"
+django-storages = "*"
 
 [requires]
 python_version = "3.7"
