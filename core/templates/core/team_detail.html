@@ -1,0 +1,391 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <style type="text/css">
+      body > .ui.container {
+        margin-top: 4em;
+      }
+
+      .ui.container > h1 {
+        font-size: 3em;
+        text-align: center;
+        font-weight: normal;
+      }
+      .ui.container > h2.dividing.header {
+        font-size: 2em;
+        font-weight: normal;
+        margin: 4em 0em 3em;
+      }
+
+      .ui.table {
+        table-layout: fixed;
+      }
+      .ui.segment,
+      .ui.segments .segment {
+        font-size: 1.25rem;
+      }
+      .prediction-text {
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        padding: 0;
+        margin: 0 0 12px 0;
+      }
+      .prediction-place {
+        margin: 5px 0px !important;
+      }
+      .prediction-place span:first-child {
+        font-size: 5rem;
+        margin-right: -6px;
+        margin-top: 10px !important;
+      }
+      .prediction-place span:last-child {
+        font-size: 1rem;
+      }
+      .right-sidebar {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .ui.header {
+        margin: 5px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui fixed inverted menu">
+      <div class="ui container">
+        <a href="#" class="header item">
+          F.I.V.E.R
+        </a>
+        <div class="ui simple dropdown item">
+          Franchises <i class="dropdown icon"></i>
+          <div class="menu">
+            {% for franchise in franchises %}
+            <a class="item" href="{% url 'team' franchise.pk %}">{{ franchise.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui container">
+      <h1>Fantasy Invitational: Victory Equals Riches</h1>
+      <div class="ui grid">
+        <div class="twelve wide column">
+          <div class="ui raised segment">
+            <a class="ui red right ribbon label"
+              >{{ object.last_year_place }}</a
+            >
+            <h2 class="ui header">{{ object.name }}</h2>
+            <p>{{ object.description }}</p>
+          </div>
+          <div class="ui segment">
+            <div class="ui top attached label">Quarterbacks</div>
+            <a class="ui red right ribbon label"
+              >{{ object.quarterbacks_rating }}</a
+            >
+            <p>
+              <img
+                class="ui medium left floated image"
+                src="{{ object.quarterback_image.url }}"
+              />{{ object.quarterbacks }}
+            </p>
+          </div>
+          <div class="ui segment">
+            <div class="ui top attached label">Running Backs</div>
+            <a class="ui red right ribbon label"
+              >{{ object.running_backs_rating }}</a
+            >
+            <p>
+              <img
+                class="ui medium left floated image"
+                src="{{ object.running_back_image.url }}"
+              />
+              {{ object.running_backs }}
+            </p>
+          </div>
+          <div class="ui segment">
+            <div class="ui top attached label">Wide Receivers / Tight Ends</div>
+            <a class="ui red right ribbon label"
+              >{{ object.receivers_rating }}</a
+            >
+            <p>
+              <img
+                class="ui medium left floated image"
+                src="{{ object.receiver_image.url }}"
+              />
+              {{ object.receivers }}
+            </p>
+          </div>
+          <h2 class="ui header">Roster</h2>
+          <table class="ui very compact striped table">
+            <thead></thead>
+            <tbody>
+              <tr class="positive">
+                <td class="one wide">QB</td>
+                <td class="four wide">Player</td>
+                <td class="four wide">Acquired</td>
+                <td>Auction Price</td>
+                <td>Rookie Pick</td>
+                <td>Waiver Price</td>
+              </tr>
+              {% for player in qbs %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.acquired }}</td>
+                <td>
+                  {% if player.auction_price %} {{ player.auction_price }} {% endif %}
+                </td>
+                <td>
+                  {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %}
+                </td>
+                <td>
+                  {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+              <tr class="positive">
+                <td>RB</td>
+                <td>Player</td>
+                <td>Acquired</td>
+                <td>Auction Price</td>
+                <td>Rookie Pick</td>
+                <td>Waiver Price</td>
+              </tr>
+              {% for player in rbs %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.acquired }}</td>
+                <td>
+                  {% if player.auction_price %} {{ player.auction_price }} {% endif %}
+                </td>
+                <td>
+                  {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %}
+                </td>
+                <td>
+                  {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+              <tr class="positive">
+                <td>WR</td>
+                <td>Player</td>
+                <td>Acquired</td>
+                <td>Auction Price</td>
+                <td>Rookie Pick</td>
+                <td>Waiver Price</td>
+              </tr>
+              {% for player in wrs %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.acquired }}</td>
+                <td>
+                  {% if player.auction_price %} {{ player.auction_price }} {% endif %}
+                </td>
+                <td>
+                  {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %}
+                </td>
+                <td>
+                  {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+              <tr class="positive">
+                <td>TE</td>
+                <td>Player</td>
+                <td>Acquired</td>
+                <td>Auction Price</td>
+                <td>Rookie Pick</td>
+                <td>Waiver Price</td>
+              </tr>
+              {% for player in tes %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.acquired }}</td>
+                <td>
+                  {% if player.auction_price %} {{ player.auction_price }} {% endif %}
+                </td>
+                <td>
+                  {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %} </td>
+                <td>
+                  {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="ui horizontal segments">
+            <div class="ui segment">
+              <div class="row">
+                <h3 class="ui header">All Eyes On - {{ object.all_eyes_on_player.name }}</h3>
+                <p>
+                  {{ object.all_eyes_on }}
+                  <img
+                  class="ui large image"
+                  src="{{ object.all_eyes_on_image.url }}"
+                  />
+                </p>
+              </div>
+            </div>
+            <div class="ui segment">
+              <h3 class="ui header">X-Factor - {{ object.x_factor_player.name }}</h3>
+              <p>
+                {{ object.x_factor }}
+                <img
+                class="ui large image"
+                src="{{ object.x_factor_image.url }}"
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="ui center aligned segment right-sidebar">
+            <img class="ui image" src="{{ object.logo.url }}" />
+            <div class="ui circular segment">
+              <div class="prediction-text">2019</div>
+              <div class="prediction-text">Predictions</div>
+              <h2 class="ui header prediction-place">
+                <span>{{ object.prediction_place }}</span>
+                <span>{{ object.prediction_place_suffix }}</span>
+                <div class="sub header">{{ object.prediction_record }}</div>
+              </h2>
+            </div>
+            {% if object.last_year_record %}
+            <div class="ui medium header">2018 Record</div>
+            <div>{{ object.last_year_record }}</div>
+            <div class="ui tiny header">Points per game</div>
+            <div>{{ object.last_year_ppg|floatformat:2 }}</div>
+            <div class="ui tiny header">Points against per game</div>
+            <div>{{ object.last_year_papg|floatformat:2 }}</div>
+            <h4 class="ui horizontal divider">Wins trend</h4>
+            <canvas id="myChart" width="400" height="400"></canvas>
+            {% endif %}
+            <h4 class="ui horizontal divider">History</h4>
+            <div class="ui tiny header">All time Record</div>
+            <div>{{ total_wins }} - {{ total_losses }}</div>
+            <div class="ui tiny header">Playoff Appearences</div>
+            <div>{{ playoffs|join:", " }}</div>
+            <div class="ui tiny header">Playoff Record</div>
+            <div>{{ playoff_wins }} - {{ playoff_losses }}</div>
+            <div class="ui tiny header">Championships</div>
+            <div>{{ championships|join:", " }}</div>
+            <div class="ui tiny header">Runner up</div>
+            <div>{{ runner_ups|join:", " }}</div>
+            <h4 class="ui horizontal divider">Top Assets</h4>
+            <div class="ui ordered list">
+              {% for asset in object.asset_players.all %}
+              <a class="item">{{ asset.player.name }}, {{ asset.player.position }}</a>
+              {% endfor %}
+            </div>
+            <h4 class="ui horizontal divider">Key Moves</h4>
+            <div class="ui tiny header">Additions</div>
+            <div class="ui unordered list">
+              {% for key in object.add_key_players.all %}
+              <a class="item">{{ key.player.name }} ({{ key.type }})</a>
+              {% endfor %}
+            </div>
+            <div class="ui tiny header">Subtractions</div>
+            <div class="ui unordered list">
+              {% for key in object.sub_key_players.all %}
+              <a class="item">{{ key.player.name }} ({{ key.type }})</a>
+              {% endfor %}
+            </div>
+          </div>
+          <div>
+              <img
+                class="ui image"
+                src="{{ object.scouting_report_image.url }}"
+              />
+              <h2 class="ui header">Scouting Recport</h2>
+              <i>{{ object.scouting_report }}</i>
+          </div>
+          <div>
+            <h4 class="ui horizontal divider"></h4>
+            <h2 class="ui header">Rookie Recport</h2>
+            <table class="ui very compact striped table">
+              <tbody>
+                <tr class="positive">
+                  <td class="one wide">Pick</td>
+                  <td class="two wide">Player</td>
+                  <td class="two wide">Stars</td>
+                </tr>
+                {% for player in object.rookie_rookie_player.all %}
+                <tr>
+                  <td>{{ player.pick }}</td>
+                  <td>{{ player.player.name }}</td>
+                  <td>
+                    <div class="ui mini star rating" data-rating="{{ player.stars }}" data-max-rating="5"></div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h4 class="ui horizontal divider"></h4>
+            <h2 class="ui header">Keys To Championship - {{ object.key_to_championship_title }}</h2>
+            <p>
+              {{ object.key_to_championship }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: {{ years }},
+          datasets: [
+            {
+              label: "# Wins",
+              data: {{ wins }},
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)"
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)"
+              ],
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true
+                }
+              }
+            ]
+          }
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){$(".rating").rating('disable');});
+    </script>
+  </body>
+</html>
