@@ -36,6 +36,11 @@ class History(admin.TabularInline):
 
 @admin.register(models.Team)
 class Team(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'mfl_id',
+        'is_active',
+    ]
     autocomplete_fields = [
         'all_eyes_on_player',
         'x_factor_player',
