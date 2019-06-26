@@ -25,7 +25,11 @@ SECRET_KEY = '#vc=_mci2vl!h%g!4km$_flcy32x-d^65g(#4ja44=a_zjd=8z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'fiver.in',
+    'fiver.herokuapp.com',
+]
 
 
 # Application definition
