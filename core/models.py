@@ -87,6 +87,7 @@ class Team(models.Model):
 
     scouting_report = models.TextField()
     scouting_report_image = models.ImageField(blank=True, null=True)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

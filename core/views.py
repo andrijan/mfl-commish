@@ -67,5 +67,7 @@ class Team(DetailView):
             team=self.object,
             position='TE'
         ).order_by('adp_as_float')
-        context['franchises'] = models.Team.objects.all()
+        context['franchises'] = models.Team.objects.filter(
+            is_active=True
+        ).order_by('-prediction_place')
         return context
