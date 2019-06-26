@@ -30,6 +30,10 @@ class RookiePlayer(admin.TabularInline):
     autocomplete_fields = ['player']
 
 
+class History(admin.TabularInline):
+    model = models.History
+
+
 @admin.register(models.Team)
 class Team(admin.ModelAdmin):
     autocomplete_fields = [
@@ -42,9 +46,5 @@ class Team(admin.ModelAdmin):
         AddKeyPlayer,
         SubKeyPlayer,
         RookiePlayer,
+        History,
     ]
-
-
-@admin.register(models.History)
-class History(admin.ModelAdmin):
-    list_display = ['team', 'year']
