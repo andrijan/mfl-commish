@@ -161,7 +161,7 @@ class History(models.Model):
 
     class Meta:
         unique_together = ('team', 'year')
-        ordering = ('-year', )
+        ordering = ('year', )
 
     def __str__(self):
         return self.team.name
