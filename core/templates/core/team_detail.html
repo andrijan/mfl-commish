@@ -35,6 +35,7 @@
       }
       .prediction-place {
         margin: 5px 0px !important;
+        color: {{ object.secondary_color }} !important;
       }
       .prediction-place span:first-child {
         font-size: 5rem;
@@ -51,6 +52,13 @@
       }
       .ui.header {
         margin: 5px 0px;
+      }
+      .background-team {
+        background-color: {{ object.base_color }} !important;
+        color: {{ object.secondary_color }} !important;
+      }
+      .team {
+        color: {{ object.base_color }} !important;
       }
     </style>
   </head>
@@ -78,11 +86,11 @@
             <a class="ui red right ribbon label"
               >{{ object.last_year_place }}</a
             >
-            <h2 class="ui header">{{ object.name }}</h2>
+            <h2 class="ui header team">{{ object.name }}</h2>
             <p>{{ object.description }}</p>
           </div>
           <div class="ui segment">
-            <div class="ui top attached label">Quarterbacks</div>
+            <div class="ui top attached label background-team" style="">Quarterbacks</div>
             <a class="ui red right ribbon label"
               >{{ object.quarterbacks_rating }}</a
             >
@@ -94,7 +102,7 @@
             </p>
           </div>
           <div class="ui segment">
-            <div class="ui top attached label">Running Backs</div>
+            <div class="ui top attached label background-team">Running Backs</div>
             <a class="ui red right ribbon label"
               >{{ object.running_backs_rating }}</a
             >
@@ -107,7 +115,7 @@
             </p>
           </div>
           <div class="ui segment">
-            <div class="ui top attached label">Wide Receivers / Tight Ends</div>
+            <div class="ui top attached label background-team">Wide Receivers / Tight Ends</div>
             <a class="ui red right ribbon label"
               >{{ object.receivers_rating }}</a
             >
@@ -119,11 +127,11 @@
               {{ object.receivers }}
             </p>
           </div>
-          <h2 class="ui header">Roster</h2>
+          <h2 class="ui header team">Roster</h2>
           <table class="ui very compact striped table">
             <thead></thead>
             <tbody>
-              <tr class="positive">
+              <tr class="background-team">
                 <td class="one wide">QB</td>
                 <td class="four wide">Player</td>
                 <td class="four wide">Acquired</td>
@@ -147,7 +155,7 @@
                 </td>
               </tr>
               {% endfor %}
-              <tr class="positive">
+              <tr class="background-team">
                 <td>RB</td>
                 <td>Player</td>
                 <td>Acquired</td>
@@ -171,7 +179,7 @@
                 </td>
               </tr>
               {% endfor %}
-              <tr class="positive">
+              <tr class="background-team">
                 <td>WR</td>
                 <td>Player</td>
                 <td>Acquired</td>
@@ -195,7 +203,7 @@
                 </td>
               </tr>
               {% endfor %}
-              <tr class="positive">
+              <tr class="background-team">
                 <td>TE</td>
                 <td>Player</td>
                 <td>Acquired</td>
@@ -248,7 +256,7 @@
         <div class="four wide column">
           <div class="ui center aligned segment right-sidebar">
             <img class="ui image" src="{{ object.logo.url }}" />
-            <div class="ui circular segment">
+            <div class="ui circular segment background-team">
               <div class="prediction-text">2019</div>
               <div class="prediction-text">Predictions</div>
               <h2 class="ui header prediction-place">
@@ -264,10 +272,10 @@
             <div>{{ object.last_year_ppg|floatformat:2 }}</div>
             <div class="ui tiny header">Points against per game</div>
             <div>{{ object.last_year_papg|floatformat:2 }}</div>
-            <h4 class="ui horizontal divider">Wins trend</h4>
+            <h4 class="ui horizontal divider team">Wins trend</h4>
             <canvas id="myChart" width="400" height="400"></canvas>
             {% endif %}
-            <h4 class="ui horizontal divider">History</h4>
+            <h4 class="ui horizontal divider team">History</h4>
             <div class="ui tiny header">All time Record</div>
             <div>{{ total_wins }} - {{ total_losses }}</div>
             <div class="ui tiny header">Playoff Appearences</div>
@@ -278,13 +286,13 @@
             <div>{{ championships|join:", " }}</div>
             <div class="ui tiny header">Runner up</div>
             <div>{{ runner_ups|join:", " }}</div>
-            <h4 class="ui horizontal divider">Top Assets</h4>
+            <h4 class="ui horizontal divider team">Top Assets</h4>
             <div class="ui ordered list">
               {% for asset in object.asset_players.all %}
               <a class="item">{{ asset.player.name }}, {{ asset.player.position }}</a>
               {% endfor %}
             </div>
-            <h4 class="ui horizontal divider">Key Moves</h4>
+            <h4 class="ui horizontal divider team">Key Moves</h4>
             <div class="ui tiny header">Additions</div>
             <div class="ui unordered list">
               {% for key in object.add_key_players.all %}
@@ -303,12 +311,12 @@
                 class="ui image"
                 src="{{ object.scouting_report_image.url }}"
               />
-              <h2 class="ui header">Scouting Recport</h2>
+              <h2 class="ui header team">Scouting Recport</h2>
               <i>{{ object.scouting_report }}</i>
           </div>
           <div>
             <h4 class="ui horizontal divider"></h4>
-            <h2 class="ui header">Rookie Recport</h2>
+            <h2 class="ui header team">Rookie Report</h2>
             <table class="ui very compact striped table">
               <tbody>
                 <tr class="positive">
@@ -330,7 +338,7 @@
           </div>
           <div>
             <h4 class="ui horizontal divider"></h4>
-            <h2 class="ui header">Keys To Championship - {{ object.key_to_championship_title }}</h2>
+            <h2 class="ui header team">Keys To Championship - {{ object.key_to_championship_title }}</h2>
             <p>
               {{ object.key_to_championship }}
             </p>
@@ -351,22 +359,8 @@
             {
               label: "# Wins",
               data: {{ wins }},
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(255, 159, 64, 0.2)"
-              ],
-              borderColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)"
-              ],
+              backgroundColor: "{{ object.base_color }}",
+              borderColor: "{{ object.secondary_color }}",
               borderWidth: 1
             }
           ]
