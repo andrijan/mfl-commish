@@ -89,6 +89,9 @@ class Team(models.Model):
     scouting_report_image = models.ImageField(blank=True, null=True)
     is_active = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ('-prediction_record', )
+
     def __str__(self):
         return self.name
 
@@ -183,7 +186,7 @@ class RookiePlayer(models.Model):
     stars = models.IntegerField(default=0)
 
     class Meta:
-        ordering: ('-pick', )
+        ordering = ('-pick', )
 
     def __str__(self):
         return self.player.name
