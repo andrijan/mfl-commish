@@ -182,6 +182,9 @@ class RookiePlayer(models.Model):
     fp_rank = models.CharField(max_length=255, blank=True, null=True)
     stars = models.IntegerField(default=0)
 
+    class Meta:
+        ordering: ('-pick', )
+
     def __str__(self):
         return self.player.name
 
