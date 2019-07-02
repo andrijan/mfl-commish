@@ -186,7 +186,7 @@ class RookiePlayer(models.Model):
     stars = models.IntegerField(default=0)
 
     class Meta:
-        ordering = ('-pick', )
+        ordering = ('pick', )
 
     def __str__(self):
         return self.player.name
