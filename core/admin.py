@@ -40,6 +40,7 @@ class Team(admin.ModelAdmin):
         'name',
         'mfl_id',
         'is_active',
+        'prediction_place',
         'quarterbacks_rating',
         'running_backs_rating',
         'receivers_rating',
