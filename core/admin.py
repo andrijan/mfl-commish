@@ -40,6 +40,9 @@ class Team(admin.ModelAdmin):
         'name',
         'mfl_id',
         'is_active',
+        'quarterbacks_rating',
+        'running_backs_rating',
+        'receivers_rating',
     ]
     autocomplete_fields = [
         'all_eyes_on_player',
