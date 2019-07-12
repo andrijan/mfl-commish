@@ -93,6 +93,7 @@ if os.environ.get('PROD', False):
 
     db_from_env = dj_database_url.config()
     DATABASES['default'].update(db_from_env)  # noqa
+    DEBUG = False
 
 
 # Password validation
