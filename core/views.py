@@ -1,8 +1,21 @@
 from django.db.models import FloatField, Sum
 from django.db.models.functions import Cast
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 
 from . import models
+
+
+class Base(TemplateView):
+    template_name = 'core/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['franchises'] = models.Team.objects.annotate(
+            pred_as_float=Cast('prediction_place', FloatField())
+        ).filter(
+            is_active=True
+        ).order_by('-pred_as_float')
+        return context
 
 
 class Team(DetailView):

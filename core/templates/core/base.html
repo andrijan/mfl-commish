@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta property="og:image" content="https://secure.i.telegraph.co.uk/multimedia/archive/02582/fiver-new_2582399b.jpg">
+    <meta property="og:description" content="Fantasy Invitational: Victory Equals Riches 2019 Predictions">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <style type="text/css">
+      body > .ui.container {
+        margin-top: 4em;
+      }
+
+      .ui.container > h1 {
+        font-size: 3em;
+        text-align: center;
+        font-weight: normal;
+      }
+      .ui.container > h2.dividing.header {
+        font-size: 2em;
+        font-weight: normal;
+        margin: 4em 0em 3em;
+      }
+
+      .ui.table {
+        table-layout: fixed;
+      }
+      .ui.segment,
+      .ui.segments .segment {
+        font-size: 1.25rem;
+      }
+      .prediction-text {
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        padding: 0;
+        margin: 0 0 12px 0;
+      }
+      .prediction-place span:first-child {
+        font-size: 5rem;
+        margin-right: -6px;
+        margin-top: 10px !important;
+      }
+      .prediction-place span:last-child {
+        font-size: 1rem;
+      }
+      .right-sidebar {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .ui.header {
+        margin: 5px 0px;
+      }
+    </style>
+    {% block extra_style %}
+    {% endblock extra_style %}
+  </head>
+  <body>
+    <div class="ui fixed inverted menu background-team">
+      <div class="ui container">
+        <a href="#" class="header item">
+          F.I.V.E.R
+        </a>
+        <div class="ui simple dropdown item">
+          Franchises <i class="dropdown icon"></i>
+          <div class="menu">
+            {% for franchise in franchises %}
+            <a class="item" href="{% url 'team' franchise.pk %}">{{ franchise.prediction_place }} {{ franchise.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui container">
+      {% block content %}
+      {% endblock content %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    {% block extra_script %}
+    {% endblock extra_script %}
+  </body>
+</html>

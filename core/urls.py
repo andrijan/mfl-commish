@@ -18,5 +18,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path(
+        '^favicon\.ico$',
+        'django.views.generic.simple.redirect_to',
+        {'url': '/static/images/favicon.ico'}
+    ),
+    path('', views.Base.as_view(), name='index'),
     path('<int:pk>/', views.Team.as_view(), name='team'),
 ]
