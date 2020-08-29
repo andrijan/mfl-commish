@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Team(models.Model):
+    year = models.IntegerField(default=2019)
     logo = models.ImageField()
     name = models.CharField(max_length=255)
     mfl_id = models.CharField(max_length=255, blank=True, null=True)
@@ -93,7 +94,7 @@ class Team(models.Model):
         ordering = ('-prediction_record', )
 
     def __str__(self):
-        return self.name
+        return '{}: {}'.format(self.year, self.name)
 
 
 class AssetPlayer(models.Model):

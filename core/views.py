@@ -10,10 +10,17 @@ class Base(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['franchises'] = models.Team.objects.annotate(
+        context['franchises_2019'] = models.Team.objects.annotate(
             pred_as_float=Cast('prediction_place', FloatField())
         ).filter(
-            is_active=True
+            year=2019,
+            is_active=True,
+        ).order_by('-pred_as_float')
+        context['franchises_2020'] = models.Team.objects.annotate(
+            pred_as_float=Cast('prediction_place', FloatField())
+        ).filter(
+            year=2020,
+            is_active=True,
         ).order_by('-pred_as_float')
         return context
 
@@ -80,9 +87,16 @@ class Team(DetailView):
             team=self.object,
             position='TE'
         ).order_by('adp_as_float')
-        context['franchises'] = models.Team.objects.annotate(
+        context['franchises_2019'] = models.Team.objects.annotate(
             pred_as_float=Cast('prediction_place', FloatField())
         ).filter(
-            is_active=True
+            year=2019,
+            is_active=True,
+        ).order_by('-pred_as_float')
+        context['franchises_2020'] = models.Team.objects.annotate(
+            pred_as_float=Cast('prediction_place', FloatField())
+        ).filter(
+            year=2020,
+            is_active=True,
         ).order_by('-pred_as_float')
         return context

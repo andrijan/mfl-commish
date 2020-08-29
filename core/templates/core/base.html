@@ -67,9 +67,17 @@
           F.I.V.E.R
         </a>
         <div class="ui simple dropdown item">
-          Franchises <i class="dropdown icon"></i>
+          2020 <i class="dropdown icon"></i>
           <div class="menu">
-            {% for franchise in franchises %}
+            {% for franchise in franchises_2020 %}
+            <a class="item" href="{% url 'team' franchise.pk %}">{{ franchise.prediction_place }} {{ franchise.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="ui simple dropdown item">
+          2019 <i class="dropdown icon"></i>
+          <div class="menu">
+            {% for franchise in franchises_2019 %}
             <a class="item" href="{% url 'team' franchise.pk %}">{{ franchise.prediction_place }} {{ franchise.name }}</a>
             {% endfor %}
           </div>

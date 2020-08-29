@@ -6,11 +6,17 @@ from . import models
 @admin.register(models.Player)
 class Player(admin.ModelAdmin):
     search_fields = ['name']
+    list_display = ['name', 'team', 'last_year_team']
+    list_filter = ['team']
+
+
+class PlayerInline(admin.StackedInline):
+    model = models.Player
+    fk_name = 'team'
 
 
 class AssetPlayer(admin.TabularInline):
     max_num = 5
-    min_num = 5
     model = models.AssetPlayer
     autocomplete_fields = ['player']
 
@@ -36,8 +42,10 @@ class History(admin.TabularInline):
 
 @admin.register(models.Team)
 class Team(admin.ModelAdmin):
+    list_filter = ['year']
     list_display = [
         'name',
+        'year',
         'mfl_id',
         'is_active',
         'prediction_place',
@@ -51,6 +59,7 @@ class Team(admin.ModelAdmin):
     ]
 
     inlines = [
+        PlayerInline,
         AssetPlayer,
         AddKeyPlayer,
         SubKeyPlayer,

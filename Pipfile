@@ -14,9 +14,9 @@ ipython = "*"
 lxml = "*"
 gunicorn = "*"
 dj-database-url = "*"
-psycopg2 = "==2.7.0"
 django-storages = "*"
 boto3 = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
