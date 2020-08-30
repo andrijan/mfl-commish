@@ -60,8 +60,6 @@ class Team(admin.ModelAdmin):
 
     inlines = [
         AssetPlayer,
-        AddKeyPlayer,
-        SubKeyPlayer,
         RookiePlayer,
         History,
     ]
