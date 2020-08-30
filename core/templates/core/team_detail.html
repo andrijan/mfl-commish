@@ -229,19 +229,6 @@
         <a class="item">{{ asset.player.name }}, {{ asset.player.position }}</a>
         {% endfor %}
       </div>
-      <h4 class="ui horizontal divider team">Key Moves</h4>
-      <div class="ui tiny header">Additions</div>
-      <div class="ui unordered list">
-        {% for key in object.add_key_players.all %}
-        <a class="item">{{ key.player.name }} ({{ key.type }})</a>
-        {% endfor %}
-      </div>
-      <div class="ui tiny header">Subtractions</div>
-      <div class="ui unordered list">
-        {% for key in object.sub_key_players.all %}
-        <a class="item">{{ key.player.name }} ({{ key.type }})</a>
-        {% endfor %}
-      </div>
     </div>
     <div>
         <img
