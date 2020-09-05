@@ -61,7 +61,7 @@
           class="ui medium left floated image"
           src="{{ object.receiver_image.url }}"
         />
-        {{ object.receivers }}
+        {{ object.receivers|safe }}
       </p>
     </div>
     <h2 class="ui header team">Roster</h2>
