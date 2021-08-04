@@ -46,9 +46,9 @@ class Team(admin.ModelAdmin):
     list_display = [
         'name',
         'year',
-        'mfl_id',
         'is_active',
         'prediction_place',
+        'prediction_record',
         'quarterbacks_rating',
         'running_backs_rating',
         'receivers_rating',

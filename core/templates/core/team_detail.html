@@ -61,7 +61,7 @@
           class="ui medium left floated image"
           src="{{ object.receiver_image.url }}"
         />
-        {{ object.receivers }}
+        {{ object.receivers|safe }}
       </p>
     </div>
     <h2 class="ui header team">Roster</h2>
@@ -147,7 +147,7 @@
     <div class="ui center aligned segment right-sidebar">
       <img class="ui image" src="{{ object.logo.url }}" />
       <div class="ui circular segment background-team">
-        <div class="prediction-text">2019</div>
+        <div class="prediction-text">{{ object.year }}</div>
         <div class="prediction-text">Predictions</div>
         <h2 class="ui header prediction-place">
           <span>{{ object.prediction_place }}</span>
@@ -156,7 +156,7 @@
         </h2>
       </div>
       {% if object.last_year_record %}
-      <div class="ui medium header">2018 Record</div>
+      <div class="ui medium header">{{ object.year|add:-1 }} Record</div>
       <div>{{ object.last_year_record }}</div>
       <div class="ui tiny header">Points per game</div>
       <div>{{ object.last_year_ppg|floatformat:2 }}</div>
