@@ -71,96 +71,49 @@
         <tr class="background-team">
           <td class="one wide">QB</td>
           <td class="four wide">Player</td>
-          <td class="four wide">Acquired</td>
-          <td>Auction Price</td>
-          <td>Rookie Pick</td>
-          <td>Waiver Price</td>
+          <td class="four wide">ADP</td>
         </tr>
         {% for player in qbs %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
-          <td>{{ player.acquired }}</td>
-          <td>
-            {% if player.auction_price %} {{ player.auction_price }} {% endif %}
-          </td>
-          <td>
-            {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %}
-          </td>
-          <td>
-            {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
-          </td>
+          <td>{{ player.adp }}</td>
         </tr>
         {% endfor %}
         <tr class="background-team">
           <td>RB</td>
           <td>Player</td>
-          <td>Acquired</td>
-          <td>Auction Price</td>
-          <td>Rookie Pick</td>
-          <td>Waiver Price</td>
+          <td class="four wide">ADP</td>
         </tr>
         {% for player in rbs %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
-          <td>{{ player.acquired }}</td>
-          <td>
-            {% if player.auction_price %} {{ player.auction_price }} {% endif %}
-          </td>
-          <td>
-            {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %}
-          </td>
-          <td>
-            {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
-          </td>
+          <td>{{ player.adp }}</td>
         </tr>
         {% endfor %}
         <tr class="background-team">
           <td>WR</td>
           <td>Player</td>
-          <td>Acquired</td>
-          <td>Auction Price</td>
-          <td>Rookie Pick</td>
-          <td>Waiver Price</td>
+          <td>ADP</td>
         </tr>
         {% for player in wrs %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
-          <td>{{ player.acquired }}</td>
-          <td>
-            {% if player.auction_price %} {{ player.auction_price }} {% endif %}
-          </td>
-          <td>
-            {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %}
-          </td>
-          <td>
-            {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
-          </td>
+          <td>{{ player.adp }}</td>
         </tr>
         {% endfor %}
         <tr class="background-team">
           <td>TE</td>
           <td>Player</td>
-          <td>Acquired</td>
-          <td>Auction Price</td>
-          <td>Rookie Pick</td>
-          <td>Waiver Price</td>
+          <td>ADP</td>
         </tr>
         {% for player in tes %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
-          <td>{{ player.acquired }}</td>
-          <td>
-            {% if player.auction_price %} {{ player.auction_price }} {% endif %}
-          </td>
-          <td>
-            {% if player.rookie_pick %} {{ player.rookie_pick }} {% endif %} </td>
-          <td>
-            {% if player.waiver_price %} {{ player.waiver_price }} {% endif %}
-          </td>
+          <td>{{ player.adp }}</td>
         </tr>
         {% endfor %}
       </tbody>
