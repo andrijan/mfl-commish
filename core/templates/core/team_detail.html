@@ -71,7 +71,8 @@
         <tr class="background-team">
           <td class="one wide">QB</td>
           <td class="four wide">Player</td>
-          <td class="four wide">ADP</td>
+          <td>Team</td>
+          <td>ADP</td>
           <td>Pass Yards</td>
           <td>Pass TDs</td>
           <td>Rush Yards</td>
@@ -81,6 +82,7 @@
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
+          <td>{{ player.stats_2020.team }}</td>
           <td>{{ player.adp }}</td>
           <td>{{ player.stats_2020.passing_yards }}</td>
           <td>{{ player.stats_2020.passing_tds }}</td>
@@ -91,7 +93,8 @@
         <tr class="background-team">
           <td>RB</td>
           <td>Player</td>
-          <td class="four wide">ADP</td>
+          <td>Team</td>
+          <td>ADP</td>
           <td>Rush Yards</td>
           <td>Rush TDs</td>
           <td>Rec. Yards</td>
@@ -101,6 +104,7 @@
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
+          <td>{{ player.stats_2020.team }}</td>
           <td>{{ player.adp }}</td>
           <td>{{ player.stats_2020.rushing_yards }}</td>
           <td>{{ player.stats_2020.rushing_tds }}</td>
@@ -111,6 +115,7 @@
         <tr class="background-team">
           <td>WR</td>
           <td>Player</td>
+          <td>Team</td>
           <td>ADP</td>
           <td>Rec.</td>
           <td>Rec. Yards</td>
@@ -120,6 +125,7 @@
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
+          <td>{{ player.stats_2020.team }}</td>
           <td>{{ player.adp }}</td>
           <td>{{ player.stats_2020.receptions }}</td>
           <td>{{ player.stats_2020.receiving_yards }}</td>
@@ -129,6 +135,7 @@
         <tr class="background-team">
           <td>TE</td>
           <td>Player</td>
+          <td>Team</td>
           <td>ADP</td>
           <td>Rec.</td>
           <td>Rec. Yards</td>
@@ -138,6 +145,7 @@
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
+          <td>{{ player.stats_2020.team }}</td>
           <td>{{ player.adp }}</td>
           <td>{{ player.stats_2020.receptions }}</td>
           <td>{{ player.stats_2020.receiving_yards }}</td>

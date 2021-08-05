@@ -238,6 +238,7 @@ class PlayerStats(models.Model):
         related_name="stats",
     )
     year = models.IntegerField()
+    team = models.CharField(max_length=255, blank=True, null=True)
     points = models.FloatField()
     games_played = models.IntegerField()
     rushing_yards = models.IntegerField()
