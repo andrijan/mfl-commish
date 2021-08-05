@@ -221,5 +221,28 @@ class Player(models.Model):
     rookie_pick = models.CharField(max_length=255, blank=True, null=True)
     waiver_price = models.CharField(max_length=255, blank=True, null=True)
 
+    @property
+    def stats_2020(self):
+        try:
+            return self.stats.get(year=2020)
+        except PlayerStats.DoesNotExist:
+            return {}
+
     def __str__(self):
         return self.name
+
+class PlayerStats(models.Model):
+    player = models.ForeignKey(
+        Player,
+        on_delete=models.CASCADE,
+        related_name="stats",
+    )
+    year = models.IntegerField()
+    points = models.FloatField()
+    games_played = models.IntegerField()
+    rushing_yards = models.IntegerField()
+    rushing_tds = models.IntegerField()
+    receiving_yards = models.IntegerField()
+    receiving_tds = models.IntegerField()
+    passing_yards = models.IntegerField()
+    passing_tds = models.IntegerField()

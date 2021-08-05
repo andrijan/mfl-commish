@@ -72,48 +72,72 @@
           <td class="one wide">QB</td>
           <td class="four wide">Player</td>
           <td class="four wide">ADP</td>
+          <td>Passing Yards</td>
+          <td>Passing TDs</td>
+          <td>Rushing Yards</td>
+          <td>Rushing TDs</td>
         </tr>
         {% for player in qbs %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
           <td>{{ player.adp }}</td>
+          <td>{{ player.stats_2020.passing_yards }}</td>
+          <td>{{ player.stats_2020.passing_tds }}</td>
+          <td>{{ player.stats_2020.rushing_yards }}</td>
+          <td>{{ player.stats_2020.rushing_tds }}</td>
         </tr>
         {% endfor %}
         <tr class="background-team">
           <td>RB</td>
           <td>Player</td>
           <td class="four wide">ADP</td>
+          <td>Rushing Yards</td>
+          <td>Rushing TDs</td>
+          <td>Receiving Yards</td>
+          <td>Receiving TDs</td>
         </tr>
         {% for player in rbs %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
           <td>{{ player.adp }}</td>
+          <td>{{ player.stats_2020.rushing_yards }}</td>
+          <td>{{ player.stats_2020.rushing_tds }}</td>
+          <td>{{ player.stats_2020.receiving_yards }}</td>
+          <td>{{ player.stats_2020.receiving_tds }}</td>
         </tr>
         {% endfor %}
         <tr class="background-team">
           <td>WR</td>
           <td>Player</td>
           <td>ADP</td>
+          <td>Receiving Yards</td>
+          <td>Receiving TDs</td>
         </tr>
         {% for player in wrs %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
           <td>{{ player.adp }}</td>
+          <td>{{ player.stats_2020.receiving_yards }}</td>
+          <td>{{ player.stats_2020.receiving_tds }}</td>
         </tr>
         {% endfor %}
         <tr class="background-team">
           <td>TE</td>
           <td>Player</td>
           <td>ADP</td>
+          <td>Receiving Yards</td>
+          <td>Receiving TDs</td>
         </tr>
         {% for player in tes %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>{{ player.name }}</td>
           <td>{{ player.adp }}</td>
+          <td>{{ player.stats_2020.receiving_yards }}</td>
+          <td>{{ player.stats_2020.receiving_tds }}</td>
         </tr>
         {% endfor %}
       </tbody>
