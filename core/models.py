@@ -242,6 +242,7 @@ class PlayerStats(models.Model):
     games_played = models.IntegerField()
     rushing_yards = models.IntegerField()
     rushing_tds = models.IntegerField()
+    receptions = models.IntegerField(default=0)
     receiving_yards = models.IntegerField()
     receiving_tds = models.IntegerField()
     passing_yards = models.IntegerField()
