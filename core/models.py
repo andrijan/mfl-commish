@@ -5,7 +5,7 @@ class Team(models.Model):
     year = models.IntegerField(default=2019)
     logo = models.ImageField()
     name = models.CharField(max_length=255)
-    mfl_id = models.CharField(max_length=255, blank=True, null=True)
+    sleeper_id = models.CharField(max_length=255, blank=True, null=True)
     base_color = models.CharField(max_length=255, blank=True, null=True)
     secondary_color = models.CharField(max_length=255, blank=True, null=True)
     is_dark = models.BooleanField(default=True)

@@ -45,6 +45,7 @@ class Team(admin.ModelAdmin):
     list_filter = ['year']
     list_display = [
         'name',
+        'sleeper_id',
         'year',
         'is_active',
         'prediction_place',
