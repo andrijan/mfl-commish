@@ -24,7 +24,7 @@
         >{{ object.last_year_place }}</a
       >
       <h2 class="ui header team">{{ object.name }}</h2>
-      <p>{{ object.description }}</p>
+      <p>{{ object.description|safe }}</p>
     </div>
     <div class="ui segment">
       <div class="ui top attached label background-team" style="">Quarterbacks</div>
