@@ -67,8 +67,17 @@
           F.I.V.E.R
         </a>
         <div class="ui simple dropdown item">
+          2021 <i class="dropdown icon"></i>
+          <div class="menu">
+            {% for franchise in franchises_2021 %}
+            <a class="item" href="{% url 'team' franchise.pk %}">{{ franchise.prediction_place }} {{ franchise.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="ui simple dropdown item">
           2020 <i class="dropdown icon"></i>
           <div class="menu">
+            <a class="item" href="{% url 'review' 2020 %}">Review</a>
             {% for franchise in franchises_2020 %}
             <a class="item" href="{% url 'team' franchise.pk %}">{{ franchise.prediction_place }} {{ franchise.name }}</a>
             {% endfor %}
@@ -77,6 +86,7 @@
         <div class="ui simple dropdown item">
           2019 <i class="dropdown icon"></i>
           <div class="menu">
+            <a class="item" href="{% url 'review' 2019 %}">Review</a>
             {% for franchise in franchises_2019 %}
             <a class="item" href="{% url 'team' franchise.pk %}">{{ franchise.prediction_place }} {{ franchise.name }}</a>
             {% endfor %}

@@ -1,6 +1,7 @@
 from django.db.models import FloatField, Sum
 from django.db.models.functions import Cast
-from django.views.generic import DetailView, TemplateView
+from django.shortcuts import render
+from django.views.generic import DetailView, TemplateView, View
 
 from . import models
 
@@ -22,7 +23,18 @@ class Base(TemplateView):
             year=2020,
             is_active=True,
         ).order_by('-pred_as_float')
+        context['franchises_2021'] = models.Team.objects.annotate(
+            pred_as_float=Cast('prediction_place', FloatField())
+        ).filter(
+            year=2021,
+            is_active=True,
+        ).order_by('-pred_as_float')
         return context
+
+
+class Review(Base):
+    def get(self, request, year, *args, **kwargs):
+        return render(request, f'core/review_{year}.html', self.get_context_data())
 
 
 class Team(DetailView):

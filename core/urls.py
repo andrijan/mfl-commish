@@ -19,5 +19,6 @@ from . import views
 
 urlpatterns = [
     path('', views.Base.as_view(), name='index'),
+    path('review/<int:year>/', views.Review.as_view(), name='review'),
     path('<int:pk>/', views.Team.as_view(), name='team'),
 ]

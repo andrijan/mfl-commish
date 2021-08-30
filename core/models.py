@@ -91,7 +91,7 @@ class Team(models.Model):
     is_active = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('-prediction_record', )
+        ordering = ('-year', 'name' )
 
     def __str__(self):
         return '{}: {}'.format(self.year, self.name)
