@@ -111,4 +111,10 @@ class Team(DetailView):
             year=2020,
             is_active=True,
         ).order_by('-pred_as_float')
+        context['franchises_2021'] = models.Team.objects.annotate(
+            pred_as_float=Cast('prediction_place', FloatField())
+        ).filter(
+            year=2021,
+            is_active=True,
+        ).order_by('-pred_as_float')
         return context
