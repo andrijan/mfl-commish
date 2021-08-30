@@ -35,7 +35,7 @@
         <img
           class="ui medium left floated image"
           src="{{ object.quarterback_image.url }}"
-        />{{ object.quarterbacks }}
+        />{{ object.quarterbacks|safe }}
       </p>
     </div>
     <div class="ui segment">
@@ -48,7 +48,7 @@
           class="ui medium left floated image"
           src="{{ object.running_back_image.url }}"
         />
-        {{ object.running_backs }}
+        {{ object.running_backs|safe }}
       </p>
     </div>
     <div class="ui segment">
@@ -159,7 +159,7 @@
         <div class="row">
           <h3 class="ui header">All Eyes On - {{ object.all_eyes_on_player.name }}</h3>
           <p>
-            {{ object.all_eyes_on }}
+            {{ object.all_eyes_on|safe }}
             <img
             class="ui large image"
             src="{{ object.all_eyes_on_image.url }}"
@@ -170,7 +170,7 @@
       <div class="ui segment">
         <h3 class="ui header">X-Factor - {{ object.x_factor_player.name }}</h3>
         <p>
-          {{ object.x_factor }}
+          {{ object.x_factor|safe }}
           <img
           class="ui large image"
           src="{{ object.x_factor_image.url }}"
@@ -225,7 +225,7 @@
           src="{{ object.scouting_report_image.url }}"
         />
         <h2 class="ui header team">Scouting Recport</h2>
-        <i>{{ object.scouting_report }}</i>
+        <i>{{ object.scouting_report|safe }}</i>
     </div>
     <div>
       <h4 class="ui horizontal divider"></h4>
